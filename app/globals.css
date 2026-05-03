@@ -213,7 +213,7 @@ textarea::placeholder {
 }
 
 .hero-section {
-  --hero-section-height: 420vh;
+  --hero-section-height: 450vh;
   --hero-about-anchor-top: 125vh;
   --hero-stage-padding: max(96px, 8vh) max(24px, 5vw) 48px;
   --hero-intro-max-width: 760px;
@@ -232,6 +232,9 @@ textarea::placeholder {
   --hero-about-grid-gap: 28px;
   --hero-about-copy-max-width: 760px;
   --hero-about-line-size: clamp(4.2rem, 10vw, 8rem);
+  --hero-about-line-height: 1.02;
+  --hero-about-line-mask-padding-bottom: 0.34em;
+  --hero-about-line-mask-margin-bottom: 0.02em;
   --hero-about-card-width: min(100%, 600px);
   --hero-about-card-margin-top: clamp(28px, 6vh, 64px);
   --hero-about-card-padding: 22px 24px;
@@ -340,6 +343,9 @@ textarea::placeholder {
     --hero-about-grid-gap: 12px;
     --hero-about-copy-max-width: 100%;
     --hero-about-line-size: clamp(2rem, 10vw, 3rem);
+    --hero-about-line-height: 1.04;
+    --hero-about-line-mask-padding-bottom: 0.38em;
+    --hero-about-line-mask-margin-bottom: 0.04em;
     --hero-about-card-width: min(100%, 34rem);
     --hero-about-card-margin-top: 18px;
     --hero-about-card-padding: 20px 18px;
@@ -379,8 +385,8 @@ textarea::placeholder {
   }
 
   .hero-about-line-wrap {
-    padding-bottom: 0.3em !important;
-    margin-bottom: 0 !important;
+    padding-bottom: var(--hero-about-line-mask-padding-bottom) !important;
+    margin-bottom: var(--hero-about-line-mask-margin-bottom) !important;
   }
 
   .hero-about-tag-row {

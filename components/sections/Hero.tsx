@@ -10,12 +10,13 @@ const HeroCanvas = dynamic(() => import("./HeroCanvas"), { ssr: false });
 
 gsap.registerPlugin(ScrollTrigger);
 
-const HERO_SECTION_HEIGHT_VH = 420;
+const HERO_SECTION_HEIGHT_VH = 450;
 const FRAME_PHASE_END = 0.68;
 // Finish the copy reveal well before the hero unpins so the last
 // cinematic frames can hold without competing with the next section.
-const REVEAL_COMPLETE_BY = FRAME_PHASE_END * 0.62;
+const REVEAL_COMPLETE_BY = FRAME_PHASE_END * 0.58;
 const TEXT_REVEAL_START = 0.02;
+const LINE_REST_Y_PERCENT = -4;
 
 const fadeUp = (delay = 0) => ({
   initial: { opacity: 0, y: 40 },
@@ -29,7 +30,7 @@ const fadeUp = (delay = 0) => ({
 
 const aboutLines = [
   { text: "Creative" },
-  { text: "developer,", accent: true },
+  { text: "developer", accent: true },
 ];
 
 const aboutTagRows = [
@@ -81,7 +82,7 @@ export default function Hero() {
       const revealWindow = REVEAL_COMPLETE_BY - TEXT_REVEAL_START;
 
       gsap.set(aboutShellRef.current, { autoAlpha: 0 });
-      gsap.set(lines, { yPercent: 112 });
+      gsap.set(lines, { yPercent: 114 });
       gsap.set(pills, { y: 28, autoAlpha: 0 });
       gsap.set(card, { x: -120, autoAlpha: 0 });
       gsap.set(orbit, { scale: 0.65, autoAlpha: 0 });
@@ -120,7 +121,7 @@ export default function Hero() {
         .to(
           lines,
           {
-            yPercent: 0,
+            yPercent: LINE_REST_Y_PERCENT,
             duration: revealWindow * 0.42,
             stagger: revealWindow * 0.08,
             ease: "none",
@@ -434,8 +435,9 @@ export default function Hero() {
                     className="hero-about-line-wrap"
                     style={{
                       overflow: "hidden",
-                      paddingBottom: "0.22em",
-                      marginBottom: "-0.02em",
+                      paddingBottom:
+                        "var(--hero-about-line-mask-padding-bottom)",
+                      marginBottom: "var(--hero-about-line-mask-margin-bottom)",
                     }}
                   >
                     <span
@@ -443,7 +445,7 @@ export default function Hero() {
                       style={{
                         display: "block",
                         fontSize: "var(--hero-about-line-size)",
-                        lineHeight: 0.96,
+                        lineHeight: "var(--hero-about-line-height)",
                         letterSpacing: "-0.07em",
                       }}
                     >

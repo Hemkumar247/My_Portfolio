@@ -29,6 +29,10 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 .pnpm-debug.log*
+dev-server.log
+dev-server-error.log
+.chrome-mobile-check/
+assets/hero-frames/
 
 # env files (can opt-in for committing if needed)
 .env*
